@@ -12,7 +12,7 @@ def test():
 
     
 with DAG(
-    'tutorial',
+    'tutorial2',
     # These args will get passed on to each operator
     # You can override them on a per-task basis during operator initialization
     default_args={
@@ -23,7 +23,7 @@ with DAG(
         'retries': 1,
         'retry_delay': timedelta(minutes=5),
     },
-    description='A simple tutorial DAG',
+    description='A simple tutorial2 DAG',
     schedule_interval='1 * * * *',
     start_date=datetime(2021, 1, 1),
     catchup=False,
