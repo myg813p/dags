@@ -35,7 +35,7 @@ dag = DAG(
     'http_request_dag',
     default_args=default_args,
     description='A DAG to make an HTTP request using requests library and save response to a file',
-    schedule_interval='* 1 * * *',  # Run every 2 minutes
+    schedule_interval='1 * * * *',  # Run every 2 minutes
     catchup=False,
 )
 
