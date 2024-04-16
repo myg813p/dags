@@ -1,6 +1,7 @@
 from datetime import datetime
 from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
+from airflow.utils.timezone import timezone
 import requests
 import json
 
@@ -32,13 +33,17 @@ default_args = {
 # Set start_date to the current time for immediate execution
 start_date = datetime.now()
 
+# Define Asia/Seoul timezone
+timezone_seoul = timezone("Asia/Seoul")
+
 # Instantiate the DAG with a specific start_date and schedule_interval
 dag = DAG(
     'http_request_dag',
     default_args=default_args,
     description='A DAG to make an HTTP request using requests library and save response to a file',
     start_date=start_date,
-    schedule_interval='*/1 * * * *',  # Run every minute
+    schedule_interval='*/2 * * * *',  # Run every 2 minutes
+    timezone=timezone_seoul,  # Set timezone to Asia/Seoul
 )
 
 # Define the task to make the HTTP request and save response to a file
