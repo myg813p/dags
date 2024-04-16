@@ -1,7 +1,7 @@
 from datetime import datetime
 from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
-from airflow.utils.timezone import timezone
+from pendulum import timezone  # Import timezone from pendulum
 import requests
 import json
 
