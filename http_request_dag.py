@@ -27,8 +27,8 @@ default_args = {
     'email_on_failure': False,
     'email_on_retry': False,
     'retries': 1,
-    'start_date': datetime(2024, 4, 16),  # Set a specific start date
-    'schedule_interval': '*/2 * * * *',  # Run every 2 minutes
+    'start_date': datetime(2024, 4, 15),  # Set a specific start date
+    'schedule_interval': '*/1 * * * *',  # Run every 2 minutes
     'timezone': 'Asia/Seoul',  # Set timezone to Asia/Seoul
 }
 
