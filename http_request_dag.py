@@ -14,9 +14,9 @@ def make_http_request_and_save_response():
         print(response.json())
         
         # Save response to a file
-        with open('/path/to/response.json', 'w') as f:
-            json.dump(response.json(), f)
-            print("Response saved to response.json")
+        # with open('/path/to/response.json', 'w') as f:
+        #    json.dump(response.json(), f)
+        #    print("Response saved to response.json")
     else:
         print(f"HTTP request failed with status code: {response.status_code}")
 
@@ -24,18 +24,21 @@ def make_http_request_and_save_response():
 default_args = {
     'owner': 'airflow',
     'depends_on_past': False,
-    'start_date': datetime(2024, 4, 16),
     'email_on_failure': False,
     'email_on_retry': False,
     'retries': 1,
 }
 
-# Instantiate the DAG with a cron schedule
+# Set start_date to the current time for immediate execution
+start_date = datetime.now()
+
+# Instantiate the DAG with a specific start_date and schedule_interval
 dag = DAG(
     'http_request_dag',
     default_args=default_args,
     description='A DAG to make an HTTP request using requests library and save response to a file',
-    schedule_interval='* * * * *',  # Runs every minute
+    start_date=start_date,
+    schedule_interval='*/1 * * * *',  # Run every minute
 )
 
 # Define the task to make the HTTP request and save response to a file
@@ -47,6 +50,3 @@ make_request_task = PythonOperator(
 
 # Set up task dependencies
 make_request_task
-
-if __name__ == "__main__":
-    dag.cli()
