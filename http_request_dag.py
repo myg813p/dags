@@ -2,7 +2,6 @@ from datetime import datetime
 from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
 import requests
-import json
 
 # Define the function to make an HTTP request and save response to a file
 def make_http_request_and_save_response():
@@ -27,8 +26,6 @@ default_args = {
     'email_on_failure': False,
     'email_on_retry': False,
     'retries': 1,
-    'start_date': datetime(2024, 4, 15),  # Set a specific start date
-    'schedule_interval': '* * * * *',  # Run every 2 minutes
     'timezone': 'Asia/Seoul',  # Set timezone to Asia/Seoul
 }
 
@@ -37,6 +34,7 @@ dag = DAG(
     'http_request_dag',
     default_args=default_args,
     description='A DAG to make an HTTP request using requests library and save response to a file',
+    schedule_interval='*/2 * * * *',  # Run every 2 minutes
 )
 
 # Define the task to make the HTTP request and save response to a file
