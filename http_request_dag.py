@@ -28,22 +28,16 @@ default_args = {
     'email_on_failure': False,
     'email_on_retry': False,
     'retries': 1,
+    'start_date': datetime.now(),  # Set start_date to the current time for immediate execution
+    'timezone': 'Asia/Seoul',  # Set timezone to Asia/Seoul
 }
 
-# Set start_date to the current time for immediate execution
-start_date = datetime.now()
-
-# Define Asia/Seoul timezone
-timezone_seoul = timezone("Asia/Seoul")
-
-# Instantiate the DAG with a specific start_date and schedule_interval
+# Instantiate the DAG with default arguments
 dag = DAG(
     'http_request_dag',
     default_args=default_args,
     description='A DAG to make an HTTP request using requests library and save response to a file',
-    start_date=start_date,
     schedule_interval='*/2 * * * *',  # Run every 2 minutes
-    timezone=timezone_seoul,  # Set timezone to Asia/Seoul
 )
 
 # Define the task to make the HTTP request and save response to a file
