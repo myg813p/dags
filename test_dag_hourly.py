@@ -16,7 +16,9 @@ default_args = {
 with DAG('test_dag_hourly', 
          default_args=default_args, 
          schedule_interval='@hourly', 
-         catchup=False) as dag:
+         catchup=False
+         tags=['test_2'],
+        ) as dag:
 
     # Task to print a message
     print_message_task = PythonOperator(
