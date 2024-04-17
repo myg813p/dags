@@ -37,6 +37,7 @@ dag = DAG(
     description='A DAG to make an HTTP request using requests library and save response to a file',
     schedule_interval='1 * * * *',  # Run every 2 minutes
     catchup=False,
+    tags=['test_1'],
 )
 
 # Define the task to make the HTTP request and save response to a file
