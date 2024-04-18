@@ -11,7 +11,7 @@ default_args = {
 }
 
 # DATASET = "vernal-dispatch-420407.kiyoung_test" 
-DATASET = "kiyoung_test" 
+DATASET = "simple_bigquery_example_dag" 
 TABLE = "forestfires"
 
 with DAG('example_bigquery_dag',
