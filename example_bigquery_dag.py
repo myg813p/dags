@@ -7,10 +7,11 @@ from airflow.providers.google.cloud.operators.bigquery import BigQueryCreateEmpt
 
 default_args = {
     'owner': 'airflow',
-    'start_date': datetime(2023, 4, 18),
+    'start_date': datetime(2024, 4, 18),
 }
 
-DATASET = "vernal-dispatch-420407.kiyoung_test" 
+# DATASET = "vernal-dispatch-420407.kiyoung_test" 
+DATASET = "kiyoung_test" 
 TABLE = "forestfires"
 
 with DAG('example_bigquery_dag',
