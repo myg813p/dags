@@ -10,7 +10,7 @@ default_args = {
     'start_date': datetime(2023, 4, 18),
 }
 
-DATASET = "simple_bigquery_example_dag" 
+DATASET = "vernal-dispatch-420407.kiyoung_test" 
 TABLE = "forestfires"
 
 with DAG('example_bigquery_dag',
@@ -32,7 +32,7 @@ with DAG('example_bigquery_dag',
             {"name": "month", "type": "STRING", "mode": "NULLABLE"},
             {"name": "day", "type": "STRING", "mode": "NULLABLE"},
         ],
-        gcp_conn_id='rc_gcp_bq_conn'
+        gcp_conn_id='google_cloud_default'
     )
 
 
